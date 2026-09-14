@@ -6,142 +6,142 @@ import Link from "next/link"
 import { ShoppingBag } from "lucide-react"
 import { useCart } from "./cart-context"
 
-type Category = "celebrations" | "decoration" | "coffrets"
+type Category = "femme" | "homme" | "bouquets"
 
 const products = [
-  // Coffrets cadeaux
+  // Catalogue Femme
   {
-    id: "coffret-anniversaire",
-    name: "Coffret Anniversaire Premium",
-    description: "Box personnalisée pour fêter vos moments spéciaux",
-    price: 89,
+    id: "femme-1",
+    name: "Box Femme Élégance",
+    description: "Collection exclusive pour les moments spéciaux",
+    price: 25000,
     originalPrice: null,
-    image: "/images/products/serum-bottles-1.png",
+    image: "/image/shop/catalogue-femme/IMG_2287.JPG",
     badge: "Meilleure vente",
-    category: "coffrets" as Category
+    category: "femme" as Category
   },
   {
-    id: "coffret-mariage",
-    name: "Coffret Mariage Élégant",
-    description: "Set de luxe pour le jour J et les témoins",
-    price: 129,
+    id: "femme-2",
+    name: "Coffret Femme Premium",
+    description: "Set de luxe pour célébrer en beauté",
+    price: 35000,
     originalPrice: null,
-    image: "/images/products/eye-serum-bottles.png",
+    image: "/image/shop/catalogue-femme/IMG_2288.JPG",
     badge: null,
-    category: "coffrets" as Category
+    category: "femme" as Category
   },
   {
-    id: "coffret-naissance",
-    name: "Coffret Naissance Douceur",
-    description: "Box bienvenue bébé avec articles personnalisés",
-    price: 75,
+    id: "femme-3",
+    name: "Box Femme Romantique",
+    description: "Création délicate pour les âmes romantiques",
+    price: 28000,
     originalPrice: null,
-    image: "/images/products/amber-dropper-bottles.png",
+    image: "/image/shop/catalogue-femme/IMG_2289.JPG",
     badge: "Nouveau",
-    category: "coffrets" as Category
+    category: "femme" as Category
   },
   {
-    id: "coffret-entreprise",
-    name: "Coffret Entreprise Pro",
-    description: "Kit corporate personnalisé pour vos événements",
-    price: 95,
-    originalPrice: 120,
-    image: "/images/products/spray-bottles.png",
+    id: "femme-4",
+    name: "Coffret Femme Soirée",
+    description: "Kit parfait pour vos événements élégants",
+    price: 40000,
+    originalPrice: 50000,
+    image: "/image/shop/catalogue-femme/IMG_2692.JPG",
     badge: "Promo",
-    category: "coffrets" as Category
+    category: "femme" as Category
   },
-  // Célébrations
+  // Catalogue Homme
   {
-    id: "box-anniversaire-adulte",
-    name: "Box Anniversaire Adulte",
-    description: "Célébration personnalisée pour vos 18, 30, 50 ans",
-    price: 65,
+    id: "homme-1",
+    name: "Box Homme Classique",
+    description: "Collection intemporelle pour hommes exigeants",
+    price: 30000,
     originalPrice: null,
-    image: "/images/products/cream-jars-colored.png",
+    image: "/image/shop/catalogue-homme/IMG_2290.JPG",
     badge: null,
-    category: "celebrations" as Category
+    category: "homme" as Category
   },
   {
-    id: "box-bapteme",
-    name: "Box Baptême Chéri",
-    description: "Décoration et souvenirs pour ce jour unique",
-    price: 45,
-    originalPrice: 58,
-    image: "/images/products/tube-bottles.png",
+    id: "homme-2",
+    name: "Coffret Homme Executive",
+    description: "Set premium pour le professionnel accompli",
+    price: 45000,
+    originalPrice: 55000,
+    image: "/image/shop/catalogue-homme/IMG_2684.JPG",
     badge: "Promo",
-    category: "celebrations" as Category
+    category: "homme" as Category
   },
   {
-    id: "box-gala",
-    name: "Box Soirée de Gala",
-    description: "Accessoires et détails pour vos événements formels",
-    price: 110,
+    id: "homme-3",
+    name: "Box Homme Sportif",
+    description: "Collection dynamique pour hommes actifs",
+    price: 32000,
     originalPrice: null,
-    image: "/images/products/jars-wooden-lid.png",
+    image: "/image/shop/catalogue-homme/IMG_2685.JPG",
     badge: "Meilleure vente",
-    category: "celebrations" as Category
+    category: "homme" as Category
   },
   {
-    id: "box-retraite",
-    name: "Box Fête de Retraite",
-    description: "Célébration de carrière avec personnalisations",
-    price: 85,
+    id: "homme-4",
+    name: "Coffret Homme Luxe",
+    description: "Création exclusive pour les moments précieux",
+    price: 55000,
     originalPrice: null,
-    image: "/images/products/pump-bottles-lavender.png",
+    image: "/image/shop/catalogue-homme/IMG_2859.JPG",
     badge: null,
-    category: "celebrations" as Category
+    category: "homme" as Category
   },
-  // Décoration
+  // Bouquets Argent
   {
-    id: "kit-decoration-table",
-    name: "Kit Décoration Table",
-    description: "Ensemble complet pour dressage de table personnalisé",
-    price: 55,
+    id: "bouquet-1",
+    name: "Bouquet Argent Classic",
+    description: "Arrangement floral élégant et raffiné",
+    price: 20000,
     originalPrice: null,
-    image: "/images/products/amber-dropper-bottles.png",
+    image: "/image/shop/catalogue-bouquet-argent/IMG_5296.jpg",
     badge: "Nouveau",
-    category: "decoration" as Category
+    category: "bouquets" as Category
   },
   {
-    id: "ballons-personnalises",
-    name: "Ballons Personnalisés",
-    description: "Kit ballons avec textes et photos personnalisés",
-    price: 35,
+    id: "bouquet-2",
+    name: "Bouquet Argent Premium",
+    description: "Composition florale luxueuse et exceptionnelle",
+    price: 35000,
     originalPrice: null,
-    image: "/images/products/serum-bottles-1.png",
+    image: "/image/shop/catalogue-bouquet-argent/IMG_5297.jpg",
     badge: null,
-    category: "decoration" as Category
+    category: "bouquets" as Category
   },
   {
-    id: "photobooth-accessoires",
-    name: "Accessoires Photobooth",
-    description: "Kit accessoires fun pour vos photos souvenir",
-    price: 42,
+    id: "bouquet-3",
+    name: "Bouquet Argent Royal",
+    description: "Création majestueuse pour les grandes occasions",
+    price: 50000,
     originalPrice: null,
-    image: "/images/products/spray-bottles.png",
+    image: "/image/shop/catalogue-bouquet-argent/IMG_5298.jpg",
     badge: null,
-    category: "decoration" as Category
+    category: "bouquets" as Category
   },
   {
-    id: "centre-table-luxe",
-    name: "Centre de Table Luxe",
-    description: "Arrangements floraux et décorations de table",
-    price: 78,
+    id: "bouquet-4",
+    name: "Bouquet Argent Signature",
+    description: "Notre création signature, inoubliable et unique",
+    price: 65000,
     originalPrice: null,
-    image: "/images/products/pump-bottles-cream.png",
+    image: "/image/shop/catalogue-bouquet-argent/IMG_5299.jpg",
     badge: "Meilleure vente",
-    category: "decoration" as Category
+    category: "bouquets" as Category
   }
 ]
 
 const categories = [
-  { value: "celebrations" as Category, label: "Célébrations" },
-  { value: "decoration" as Category, label: "Décoration" },
-  { value: "coffrets" as Category, label: "Coffrets cadeaux" }
+  { value: "femme" as Category, label: "Femme" },
+  { value: "homme" as Category, label: "Homme" },
+  { value: "bouquets" as Category, label: "Bouquets Argent" }
 ]
 
 export function ProductGrid() {
-  const [selectedCategory, setSelectedCategory] = useState<Category>("celebrations")
+  const [selectedCategory, setSelectedCategory] = useState<Category>("femme")
   const [isVisible, setIsVisible] = useState(false)
   const [isTransitioning, setIsTransitioning] = useState(false)
   const [headerVisible, setHeaderVisible] = useState(false)
@@ -231,7 +231,7 @@ export function ProductGrid() {
             <div
               className="absolute top-1 bottom-1 bg-[#572D15] rounded-full transition-all duration-300 ease-out shadow-sm"
               style={{
-                left: selectedCategory === 'celebrations' ? '4px' : selectedCategory === 'decoration' ? 'calc(33.333% + 2px)' : 'calc(66.666%)',
+                left: selectedCategory === 'femme' ? '4px' : selectedCategory === 'homme' ? 'calc(33.333% + 2px)' : 'calc(66.666%)',
                 width: 'calc(33.333% - 4px)'
               }}
             />
@@ -315,10 +315,10 @@ export function ProductGrid() {
                   <h3 className="font-serif text-lg text-[#572D15] mb-1">{product.name}</h3>
                   <p className="text-sm text-[#2B160C] mb-3">{product.description}</p>
                   <div className="flex items-center gap-2">
-                    <span className="font-medium text-[#572D15]">{product.price}€</span>
+                    <span className="font-medium text-[#572D15]">{product.price.toLocaleString()} FCFA</span>
                     {product.originalPrice && (
                       <span className="text-sm text-[#2B160C] line-through">
-                        {product.originalPrice}€
+                        {product.originalPrice.toLocaleString()} FCFA
                       </span>
                     )}
                   </div>

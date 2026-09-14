@@ -6,10 +6,10 @@ import { Instagram, Facebook, Twitter } from "lucide-react"
 const footerLinks = {
   shop: [
     { name: "Toutes nos box", href: "/shop" },
-    { name: "Coffrets cadeaux", href: "/shop?category=coffrets" },
-    { name: "Célébrations", href: "/shop?category=celebrations" },
-    { name: "Décoration", href: "/shop?category=decoration" },
-    { name: "Entreprises", href: "/shop" }
+    { name: "Collection Femme", href: "/shop?category=femme" },
+    { name: "Collection Homme", href: "/shop?category=homme" },
+    { name: "Bouquets Argent", href: "/shop?category=bouquets" },
+    { name: "Personnalisation", href: "/shop" }
   ],
   about: [
     { name: "Notre histoire", href: "/" },

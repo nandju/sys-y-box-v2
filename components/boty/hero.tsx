@@ -25,7 +25,7 @@ export function Hero() {
             objectFit: 'cover'
           }}
         >
-          <source src="/movie/243647_small.mp4" type="video/mp4" />
+          <source src="/movie/247338.mp4" type="video/mp4" />
         </video>
         {/* Bottom fade gradient */}
         <div className="absolute bottom-0 left-0 right-0 h-[60%] bg-gradient-to-t from-background via-background/50 to-transparent" />

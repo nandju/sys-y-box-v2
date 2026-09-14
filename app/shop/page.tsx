@@ -8,153 +8,192 @@ import { Header } from "@/components/boty/header"
 import { Footer } from "@/components/boty/footer"
 
 const products = [
-  // Serums
+  // Catalogue Femme
   {
-    id: "radiance-serum",
-    name: "Radiance Serum",
-    description: "Vitamin C brightening formula",
-    price: 68,
+    id: "femme-1",
+    name: "Box Femme Élégance",
+    description: "Collection exclusive pour les moments spéciaux",
+    price: 25000,
     originalPrice: null,
-    image: "/images/products/serum-bottles-1.png",
-    badge: "Bestseller",
-    category: "serums"
+    image: "/image/shop/catalogue-femme/IMG_2287.JPG",
+    badge: "Meilleure vente",
+    category: "femme"
   },
   {
-    id: "hydrating-serum",
-    name: "Hydrating Serum",
-    description: "Hyaluronic acid moisture boost",
-    price: 62,
+    id: "femme-2",
+    name: "Coffret Femme Premium",
+    description: "Set de luxe pour célébrer en beauté",
+    price: 35000,
     originalPrice: null,
-    image: "/images/products/eye-serum-bottles.png",
+    image: "/image/shop/catalogue-femme/IMG_2288.JPG",
     badge: null,
-    category: "serums"
+    category: "femme"
   },
   {
-    id: "age-defense-serum",
-    name: "Age Defense Serum",
-    description: "Retinol & peptide complex",
-    price: 78,
+    id: "femme-3",
+    name: "Box Femme Romantique",
+    description: "Création délicate pour les âmes romantiques",
+    price: 28000,
     originalPrice: null,
-    image: "/images/products/amber-dropper-bottles.png",
-    badge: "New",
-    category: "serums"
+    image: "/image/shop/catalogue-femme/IMG_2289.JPG",
+    badge: "Nouveau",
+    category: "femme"
   },
   {
-    id: "glow-serum",
-    name: "Glow Serum",
-    description: "Niacinamide brightening boost",
-    price: 58,
-    originalPrice: 68,
-    image: "/images/products/spray-bottles.png",
-    badge: "Sale",
-    category: "serums"
+    id: "femme-4",
+    name: "Coffret Femme Soirée",
+    description: "Kit parfait pour vos événements élégants",
+    price: 40000,
+    originalPrice: 50000,
+    image: "/image/shop/catalogue-femme/IMG_2692.JPG",
+    badge: "Promo",
+    category: "femme"
   },
-  // Creams
   {
-    id: "hydra-cream",
-    name: "Hydra Cream",
-    description: "Deep moisture with hyaluronic acid",
-    price: 54,
+    id: "femme-5",
+    name: "Box Femme Classic",
+    description: "Collection classique pour femmes exigeantes",
+    price: 22000,
     originalPrice: null,
-    image: "/images/products/cream-jars-colored.png",
+    image: "/image/shop/catalogue-femme/IMG_2693.JPG",
     badge: null,
-    category: "moisturizers"
+    category: "femme"
   },
   {
-    id: "gentle-cleanser",
-    name: "Gentle Cleanser",
-    description: "Soothing botanical wash",
-    price: 38,
-    originalPrice: 48,
-    image: "/images/products/tube-bottles.png",
-    badge: "Sale",
-    category: "cleansers"
-  },
-  {
-    id: "night-cream",
-    name: "Night Cream",
-    description: "Restorative overnight treatment",
-    price: 64,
+    id: "femme-6",
+    name: "Coffret Femme Luxe",
+    description: "Création luxueuse pour les grandes occasions",
+    price: 45000,
     originalPrice: null,
-    image: "/images/products/jars-wooden-lid.png",
-    badge: "Bestseller",
-    category: "moisturizers"
+    image: "/image/shop/catalogue-femme/IMG_3625.JPG",
+    badge: "Meilleure vente",
+    category: "femme"
   },
+  // Catalogue Homme
   {
-    id: "day-cream-spf",
-    name: "Day Cream SPF 30",
-    description: "Protection & hydration",
-    price: 58,
+    id: "homme-1",
+    name: "Box Homme Classique",
+    description: "Collection intemporelle pour hommes exigeants",
+    price: 30000,
     originalPrice: null,
-    image: "/images/products/pump-bottles-lavender.png",
+    image: "/image/shop/catalogue-homme/IMG_2290.JPG",
     badge: null,
-    category: "moisturizers"
-  },
-  // Oils
-  {
-    id: "renewal-oil",
-    name: "Renewal Oil",
-    description: "Nourishing facial oil blend",
-    price: 72,
-    originalPrice: null,
-    image: "/images/products/amber-dropper-bottles.png",
-    badge: "New",
-    category: "oils"
+    category: "homme"
   },
   {
-    id: "rosehip-oil",
-    name: "Rosehip Oil",
-    description: "Pure organic rosehip extract",
-    price: 48,
+    id: "homme-2",
+    name: "Coffret Homme Executive",
+    description: "Set premium pour le professionnel accompli",
+    price: 45000,
+    originalPrice: 55000,
+    image: "/image/shop/catalogue-homme/IMG_2684.JPG",
+    badge: "Promo",
+    category: "homme"
+  },
+  {
+    id: "homme-3",
+    name: "Box Homme Sportif",
+    description: "Collection dynamique pour hommes actifs",
+    price: 32000,
     originalPrice: null,
-    image: "/images/products/serum-bottles-1.png",
+    image: "/image/shop/catalogue-homme/IMG_2685.JPG",
+    badge: "Meilleure vente",
+    category: "homme"
+  },
+  {
+    id: "homme-4",
+    name: "Coffret Homme Luxe",
+    description: "Création exclusive pour les moments précieux",
+    price: 55000,
+    originalPrice: null,
+    image: "/image/shop/catalogue-homme/IMG_2859.JPG",
     badge: null,
-    category: "oils"
+    category: "homme"
   },
   {
-    id: "jojoba-oil",
-    name: "Jojoba Oil",
-    description: "Balancing & lightweight",
-    price: 42,
+    id: "homme-5",
+    name: "Box Homme Business",
+    description: "Kit professionnel pour hommes d'affaires",
+    price: 38000,
     originalPrice: null,
-    image: "/images/products/spray-bottles.png",
+    image: "/image/shop/catalogue-homme/IMG_2870.JPG",
+    badge: "Nouveau",
+    category: "homme"
+  },
+  {
+    id: "homme-6",
+    name: "Coffret Homme Signature",
+    description: "Notre création signature exclusive",
+    price: 60000,
+    originalPrice: null,
+    image: "/image/shop/catalogue-homme/IMG_3768.JPG",
     badge: null,
-    category: "oils"
+    category: "homme"
+  },
+  // Bouquets Argent
+  {
+    id: "bouquet-1",
+    name: "Bouquet Argent Classic",
+    description: "Arrangement floral élégant et raffiné",
+    price: 20000,
+    originalPrice: null,
+    image: "/image/shop/catalogue-bouquet-argent/IMG_5296.jpg",
+    badge: "Nouveau",
+    category: "bouquets"
   },
   {
-    id: "argan-oil",
-    name: "Argan Oil",
-    description: "Moroccan beauty elixir",
-    price: 56,
+    id: "bouquet-2",
+    name: "Bouquet Argent Premium",
+    description: "Composition florale luxueuse et exceptionnelle",
+    price: 35000,
     originalPrice: null,
-    image: "/images/products/pump-bottles-cream.png",
-    badge: "Bestseller",
-    category: "oils"
-  },
-  // Masks & Toners (original products)
-  {
-    id: "glow-mask",
-    name: "Glow Mask",
-    description: "Weekly brightening treatment",
-    price: 45,
-    originalPrice: null,
-    image: "/images/products/mask.jpg",
+    image: "/image/shop/catalogue-bouquet-argent/IMG_5297.jpg",
     badge: null,
-    category: "masks"
+    category: "bouquets"
   },
   {
-    id: "balance-toner",
-    name: "Balance Toner",
-    description: "pH restoring mist",
-    price: 32,
+    id: "bouquet-3",
+    name: "Bouquet Argent Royal",
+    description: "Création majestueuse pour les grandes occasions",
+    price: 50000,
     originalPrice: null,
-    image: "/images/products/toner.jpg",
-    badge: "New",
-    category: "toners"
+    image: "/image/shop/catalogue-bouquet-argent/IMG_5298.jpg",
+    badge: null,
+    category: "bouquets"
+  },
+  {
+    id: "bouquet-4",
+    name: "Bouquet Argent Signature",
+    description: "Notre création signature, inoubliable et unique",
+    price: 65000,
+    originalPrice: null,
+    image: "/image/shop/catalogue-bouquet-argent/IMG_5299.jpg",
+    badge: "Meilleure vente",
+    category: "bouquets"
+  },
+  {
+    id: "bouquet-5",
+    name: "Bouquet Argent Élégance",
+    description: "Arrangement sophistiqué pour moments précieux",
+    price: 28000,
+    originalPrice: null,
+    image: "/image/shop/catalogue-bouquet-argent/IMG_5301.jpg",
+    badge: null,
+    category: "bouquets"
+  },
+  {
+    id: "bouquet-6",
+    name: "Bouquet Argent Prestige",
+    description: "Composition haut de gamme pour événements luxe",
+    price: 75000,
+    originalPrice: 90000,
+    image: "/image/shop/catalogue-bouquet-argent/IMG_5317.jpg",
+    badge: "Promo",
+    category: "bouquets"
   }
 ]
 
-const categories = ["all", "serums", "moisturizers", "cleansers", "oils", "masks", "toners"]
+const categories = ["all", "femme", "homme", "bouquets"]
 
 export default function ShopPage() {
   const [selectedCategory, setSelectedCategory] = useState("all")
@@ -203,13 +242,13 @@ export default function ShopPage() {
           {/* Header */}
           <div className="text-center mb-12">
             <span className="text-sm tracking-[0.3em] uppercase text-primary mb-4 block">
-              Our Collection
+              Notre Collection
             </span>
             <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl text-foreground mb-4 text-balance">
-              Shop All Products
+              Toutes nos Box
             </h1>
             <p className="text-lg text-muted-foreground max-w-md mx-auto">
-              Discover our complete range of natural skincare essentials
+              Découvrez notre gamme complète de box personnalisées pour tous vos événements
             </p>
           </div>
 
@@ -231,19 +270,19 @@ export default function ShopPage() {
                   key={category}
                   type="button"
                   onClick={() => setSelectedCategory(category)}
-                  className={`px-4 py-2 rounded-full text-sm capitalize boty-transition bg-popover ${
+                  className={`px-4 py-2 rounded-full text-sm boty-transition bg-popover ${
                     selectedCategory === category
                       ? "bg-primary text-primary-foreground"
                       : "bg-card text-foreground/70 hover:text-foreground boty-shadow"
                   }`}
                 >
-                  {category}
+                  {category === "all" ? "Tous" : category === "femme" ? "Femme" : category === "homme" ? "Homme" : "Bouquets"}
                 </button>
               ))}
             </div>
 
             <span className="text-sm text-muted-foreground">
-              {filteredProducts.length} {filteredProducts.length === 1 ? "product" : "products"}
+              {filteredProducts.length} {filteredProducts.length === 1 ? "article" : "articles"}
             </span>
           </div>
 
@@ -270,13 +309,13 @@ export default function ShopPage() {
                         setSelectedCategory(category)
                         setShowFilters(false)
                       }}
-                      className={`w-full px-6 py-4 rounded-2xl text-left capitalize boty-transition ${
+                      className={`w-full px-6 py-4 rounded-2xl text-left boty-transition ${
                         selectedCategory === category
                           ? "bg-primary text-primary-foreground"
                           : "bg-card text-foreground boty-shadow"
                       }`}
                     >
-                      {category}
+                      {category === "all" ? "Tous" : category === "femme" ? "Femme" : category === "homme" ? "Homme" : "Bouquets"}
                     </button>
                   ))}
                 </div>
@@ -348,11 +387,11 @@ function ProductCard({
           {product.badge && (
             <span
               className={`absolute top-4 left-4 px-3 py-1 rounded-full text-xs tracking-wide ${
-                product.badge === "Sale"
-                  ? "bg-destructive/10 text-destructive"
-                  : product.badge === "New"
-                  ? "bg-primary/10 text-primary"
-                  : "bg-accent text-accent-foreground"
+                product.badge === "Promo"
+                  ? "bg-[#AA2D25] text-[#FCF8EF]"
+                  : product.badge === "Nouveau"
+                  ? "bg-[#EABC3D] text-[#572D15]"
+                  : "bg-[#C8982C] text-[#FCF8EF]"
               }`}
             >
               {product.badge}
@@ -365,7 +404,7 @@ function ProductCard({
             onClick={(e) => {
               e.preventDefault()
             }}
-            aria-label="Add to cart"
+            aria-label="Ajouter au panier"
           >
             <ShoppingBag className="w-5 h-5 text-foreground" />
           </button>
@@ -376,10 +415,10 @@ function ProductCard({
           <h3 className="font-serif text-xl text-foreground mb-1">{product.name}</h3>
           <p className="text-sm text-muted-foreground mb-4">{product.description}</p>
           <div className="flex items-center gap-2">
-            <span className="text-lg font-medium text-foreground">${product.price}</span>
+            <span className="text-lg font-medium text-foreground">{product.price.toLocaleString()} FCFA</span>
             {product.originalPrice && (
               <span className="text-sm text-muted-foreground line-through">
-                ${product.originalPrice}
+                {product.originalPrice.toLocaleString()} FCFA
               </span>
             )}
           </div>

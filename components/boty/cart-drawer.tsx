@@ -16,7 +16,7 @@ import { useCart } from "./cart-context"
 export function CartDrawer() {
   const { items, removeItem, updateQuantity, isOpen, setIsOpen, itemCount, subtotal } = useCart()
 
-  const shipping = 0
+  const shipping: number = 0
   const total = subtotal + shipping
 
   return (
@@ -96,7 +96,7 @@ export function CartDrawer() {
 
                   {/* Price */}
                   <div className="text-right">
-                    <p className="font-medium text-foreground">{item.price * item.quantity}€</p>
+                    <p className="font-medium text-foreground">{(item.price * item.quantity).toLocaleString()} FCFA</p>
                   </div>
                 </div>
               ))}
@@ -110,15 +110,15 @@ export function CartDrawer() {
             <div className="space-y-2 text-sm">
               <div className="flex justify-between text-muted-foreground">
                 <span>Sous-total</span>
-                <span>{subtotal}€</span>
+                <span>{subtotal.toLocaleString()} FCFA</span>
               </div>
               <div className="flex justify-between text-muted-foreground">
                 <span>Livraison</span>
-                <span>{shipping === 0 ? 'Offerte' : `${shipping}€`}</span>
+                <span>{shipping === 0 ? 'Offerte' : `${shipping.toLocaleString()} FCFA`}</span>
               </div>
               <div className="flex justify-between text-base font-medium text-foreground pt-2 border-t border-border/50">
                 <span>Total</span>
-                <span>{total}€</span>
+                <span>{total.toLocaleString()} FCFA</span>
               </div>
             </div>
 
