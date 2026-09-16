@@ -209,24 +209,24 @@ export function ProductGrid() {
   }, [])
 
   return (
-    <section className="py-24 bg-card">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+    <section className="py-12 sm:py-16 lg:py-24 bg-card">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div ref={headerRef} className="text-center mb-16">
-          <span className={`text-sm tracking-[0.3em] uppercase text-primary mb-4 block ${headerVisible ? 'animate-blur-in opacity-0' : 'opacity-0'}`} style={headerVisible ? { animationDelay: '0.2s', animationFillMode: 'forwards' } : {}}>
+        <div ref={headerRef} className="text-center mb-10 sm:mb-12 lg:mb-16">
+          <span className={`text-xs sm:text-sm tracking-[0.2em] sm:tracking-[0.3em] uppercase text-primary mb-3 sm:mb-4 block ${headerVisible ? 'animate-blur-in opacity-0' : 'opacity-0'}`} style={headerVisible ? { animationDelay: '0.2s', animationFillMode: 'forwards' } : {}}>
             Notre collection
           </span>
-          <h2 className={`font-serif leading-tight text-foreground mb-4 text-balance text-7xl ${headerVisible ? 'animate-blur-in opacity-0' : 'opacity-0'}`} style={headerVisible ? { animationDelay: '0.4s', animationFillMode: 'forwards' } : {}}>
+          <h2 className={`font-serif leading-tight text-foreground mb-3 sm:mb-4 text-balance text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl ${headerVisible ? 'animate-blur-in opacity-0' : 'opacity-0'}`} style={headerVisible ? { animationDelay: '0.4s', animationFillMode: 'forwards' } : {}}>
             Des expériences uniques
           </h2>
-          <p className={`text-lg text-muted-foreground max-w-md mx-auto ${headerVisible ? 'animate-blur-in opacity-0' : 'opacity-0'}`} style={headerVisible ? { animationDelay: '0.6s', animationFillMode: 'forwards' } : {}}>
+          <p className={`text-sm sm:text-base lg:text-lg text-muted-foreground max-w-md mx-auto ${headerVisible ? 'animate-blur-in opacity-0' : 'opacity-0'}`} style={headerVisible ? { animationDelay: '0.6s', animationFillMode: 'forwards' } : {}}>
             Des offres imaginées avec soin pour vos plus beaux moments
           </p>
         </div>
 
         {/* Segmented Control */}
-        <div className="flex justify-center mb-12">
-          <div className="inline-flex bg-[#FCF8EF] rounded-full p-1 gap-1 relative">
+        <div className="flex justify-center mb-8 sm:mb-10 lg:mb-12 px-2">
+          <div className="inline-flex bg-[#FCF8EF] rounded-full p-1 gap-1 relative w-full max-w-md sm:w-auto">
             {/* Animated background slide */}
             <div
               className="absolute top-1 bottom-1 bg-[#572D15] rounded-full transition-all duration-300 ease-out shadow-sm"
@@ -240,7 +240,7 @@ export function ProductGrid() {
                 key={category.value}
                 type="button"
                 onClick={() => handleCategoryChange(category.value)}
-                className={`relative z-10 px-6 py-2.5 rounded-full text-sm font-medium transition-all duration-300 ${
+                className={`relative z-10 flex-1 sm:flex-none px-2 sm:px-6 py-2 sm:py-2.5 rounded-full text-[11px] sm:text-sm font-medium transition-all duration-300 whitespace-nowrap ${
                   selectedCategory === category.value
                     ? "text-[#FCF8EF]"
                     : "text-[#2B160C] hover:text-[#572D15]"
@@ -255,7 +255,7 @@ export function ProductGrid() {
         {/* Product Grid */}
         <div 
           ref={gridRef}
-          className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6"
+          className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 lg:gap-6"
         >
           {filteredProducts.map((product, index) => (
             <Link
@@ -266,7 +266,7 @@ export function ProductGrid() {
               }`}
               style={{ transitionDelay: isTransitioning ? '0ms' : `${index * 80}ms` }}
             >
-              <div className="bg-[#FCF8EF] rounded-3xl overflow-hidden boty-shadow boty-transition group-hover:scale-[1.02]">
+              <div className="bg-[#FCF8EF] rounded-2xl sm:rounded-3xl overflow-hidden boty-shadow boty-transition group-hover:scale-[1.02]">
                 {/* Image */}
                 <div className="relative aspect-square bg-muted overflow-hidden">
                   <Image
@@ -278,7 +278,7 @@ export function ProductGrid() {
                   {/* Badge */}
                   {product.badge && (
                     <span
-                      className={`absolute top-4 left-4 px-3 py-1 rounded-full text-xs tracking-wide ${
+                      className={`absolute top-2 sm:top-4 left-2 sm:left-4 px-2 sm:px-3 py-0.5 sm:py-1 rounded-full text-[10px] sm:text-xs tracking-wide ${
                         product.badge === "Promo"
                           ? "bg-[#AA2D25] text-[#FCF8EF]"
                           : product.badge === "Nouveau"
@@ -292,7 +292,7 @@ export function ProductGrid() {
                   {/* Quick add button */}
                   <button
                     type="button"
-                    className="absolute bottom-4 right-4 w-10 h-10 rounded-full bg-[#FCF8EF]/90 backdrop-blur-sm flex items-center justify-center opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 boty-transition boty-shadow"
+                    className="absolute bottom-2 sm:bottom-4 right-2 sm:right-4 w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-[#FCF8EF]/90 backdrop-blur-sm flex items-center justify-center opacity-100 sm:opacity-0 translate-y-0 sm:translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 boty-transition boty-shadow"
                     onClick={(e) => {
                       e.preventDefault()
                       e.stopPropagation()
@@ -306,18 +306,18 @@ export function ProductGrid() {
                     }}
                     aria-label="Ajouter au panier"
                   >
-                    <ShoppingBag className="w-4 h-4 text-[#572D15]" />
+                    <ShoppingBag className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#572D15]" />
                   </button>
                 </div>
 
                 {/* Info */}
-                <div className="p-5">
-                  <h3 className="font-serif text-lg text-[#572D15] mb-1">{product.name}</h3>
-                  <p className="text-sm text-[#2B160C] mb-3">{product.description}</p>
-                  <div className="flex items-center gap-2">
-                    <span className="font-medium text-[#572D15]">{product.price.toLocaleString()} FCFA</span>
+                <div className="p-3 sm:p-4 lg:p-5">
+                  <h3 className="font-serif text-sm sm:text-base lg:text-lg text-[#572D15] mb-1 line-clamp-1">{product.name}</h3>
+                  <p className="text-xs sm:text-sm text-[#2B160C] mb-2 sm:mb-3 line-clamp-2">{product.description}</p>
+                  <div className="flex items-center flex-wrap gap-1 sm:gap-2">
+                    <span className="text-sm sm:text-base font-medium text-[#572D15]">{product.price.toLocaleString()} FCFA</span>
                     {product.originalPrice && (
-                      <span className="text-sm text-[#2B160C] line-through">
+                      <span className="text-xs sm:text-sm text-[#2B160C] line-through">
                         {product.originalPrice.toLocaleString()} FCFA
                       </span>
                     )}
@@ -329,10 +329,10 @@ export function ProductGrid() {
         </div>
 
         {/* View All Button */}
-        <div className="text-center mt-12">
+        <div className="text-center mt-8 sm:mt-10 lg:mt-12">
           <Link
             href="/shop"
-            className="inline-flex items-center justify-center gap-2 bg-transparent border border-[#C8982C] text-[#572D15] px-8 py-4 rounded-full text-sm tracking-wide boty-transition hover:bg-[#EABC3D]/10"
+            className="inline-flex items-center justify-center gap-2 bg-transparent border border-[#C8982C] text-[#572D15] px-6 sm:px-8 py-3 sm:py-4 rounded-full text-xs sm:text-sm tracking-wide boty-transition hover:bg-[#EABC3D]/10"
           >
             Voir toutes nos offres
           </Link>

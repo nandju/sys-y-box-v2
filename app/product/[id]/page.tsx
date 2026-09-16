@@ -4,9 +4,10 @@ import { useState, useEffect } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { useParams } from "next/navigation"
-import { ChevronLeft, Minus, Plus, ChevronDown, Leaf, Heart, Award, Recycle, Star, Check } from "lucide-react"
+import { ChevronLeft, Minus, Plus, ChevronDown, Leaf, Heart, Award, Recycle, Star, Check, ShoppingBag } from "lucide-react"
 import { Header } from "@/components/boty/header"
 import { Footer } from "@/components/boty/footer"
+import { useCart } from "@/components/boty/cart-context"
 
 const products: Record<string, {
   id: string
@@ -81,10 +82,10 @@ const products: Record<string, {
 }
 
 const benefits = [
-  { icon: Leaf, label: "100% Natural" },
-  { icon: Heart, label: "Cruelty-Free" },
-  { icon: Recycle, label: "Eco-Friendly" },
-  { icon: Award, label: "Expert Approved" }
+  { icon: Heart, label: "100% Personnalisé" },
+  { icon: Award, label: "Qualité Premium" },
+  { icon: ShoppingBag, label: "Livraison Offerte" },
+  { icon: Leaf, label: "Éco-responsable" }
 ]
 
 type AccordionSection = "details" | "howToUse" | "ingredients" | "delivery"
@@ -92,7 +93,8 @@ type AccordionSection = "details" | "howToUse" | "ingredients" | "delivery"
 export default function ProductPage() {
   const params = useParams()
   const productId = params.id as string
-  const product = products[productId] || products["radiance-serum"]
+  const product = products[productId] || Object.values(products)[0]
+  const { addItem } = useCart()
 
   const [selectedSize, setSelectedSize] = useState(product.sizes[0])
   const [quantity, setQuantity] = useState(1)
@@ -108,15 +110,22 @@ export default function ProductPage() {
   }
 
   const handleAddToCart = () => {
+    addItem({
+      id: product.id,
+      name: product.name,
+      description: product.tagline,
+      price: product.price,
+      image: product.image
+    })
     setIsAdded(true)
     setTimeout(() => setIsAdded(false), 2000)
   }
 
   const accordionItems: { key: AccordionSection; title: string; content: string }[] = [
-    { key: "details", title: "Details", content: product.details },
-    { key: "howToUse", title: "How to Use", content: product.howToUse },
-    { key: "ingredients", title: "Ingredients", content: product.ingredients },
-    { key: "delivery", title: "Delivery & Returns", content: product.delivery }
+    { key: "details", title: "Détails", content: product.details || "Détails du produit à venir." },
+    { key: "howToUse", title: "Utilisation", content: product.howToUse || "Instructions d'utilisation à venir." },
+    { key: "ingredients", title: "Composition", content: product.ingredients || "Composition à venir." },
+    { key: "delivery", title: "Livraison", content: product.delivery || "Livraison gratuite partout en Côte d'Ivoire." }
   ]
 
   return (
@@ -127,11 +136,11 @@ export default function ProductPage() {
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           {/* Back Link */}
           <Link
-            href="/"
+            href="/shop"
             className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground boty-transition mb-8"
           >
             <ChevronLeft className="w-4 h-4" />
-            Back to Shop
+            Retour à la boutique
           </Link>
 
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-20">
@@ -151,7 +160,7 @@ export default function ProductPage() {
               {/* Header */}
               <div className="mb-8">
                 <span className="text-sm tracking-[0.3em] uppercase text-primary mb-2 block">
-                  Boty Essentials
+                  SYS'Y BOX EVENTS
                 </span>
                 <h1 className="font-serif text-4xl md:text-5xl text-foreground mb-3">
                   {product.name}
@@ -159,16 +168,6 @@ export default function ProductPage() {
                 <p className="text-lg text-muted-foreground italic mb-4">
                   {product.tagline}
                 </p>
-                
-                {/* Rating */}
-                <div className="flex items-center gap-2 mb-4">
-                  <div className="flex">
-                    {[...Array(5)].map((_, i) => (
-                      <Star key={i} className="w-4 h-4 fill-primary text-primary" />
-                    ))}
-                  </div>
-                  <span className="text-sm text-muted-foreground">(128 reviews)</span>
-                </div>
 
                 <p className="text-foreground/80 leading-relaxed">
                   {product.description}
@@ -177,17 +176,17 @@ export default function ProductPage() {
 
               {/* Price */}
               <div className="flex items-center gap-3 mb-8">
-                <span className="text-3xl font-medium text-foreground">${product.price}</span>
+                <span className="text-3xl font-medium text-foreground">{product.price.toLocaleString()} FCFA</span>
                 {product.originalPrice && (
                   <span className="text-xl text-muted-foreground line-through">
-                    ${product.originalPrice}
+                    {product.originalPrice.toLocaleString()} FCFA
                   </span>
                 )}
               </div>
 
               {/* Size Selector */}
               <div className="mb-6">
-                <label className="text-sm font-medium text-foreground mb-3 block">Size</label>
+                <label className="text-sm font-medium text-foreground mb-3 block">Taille</label>
                 <div className="flex gap-3">
                   {product.sizes.map((size) => (
                     <button
@@ -208,7 +207,7 @@ export default function ProductPage() {
 
               {/* Quantity Selector */}
               <div className="mb-8">
-                <label className="text-sm font-medium text-foreground mb-3 block">Quantity</label>
+                <label className="text-sm font-medium text-foreground mb-3 block">Quantité</label>
                 <div className="inline-flex items-center gap-4 bg-card rounded-full px-2 py-2 boty-shadow">
                   <button
                     type="button"
@@ -244,17 +243,11 @@ export default function ProductPage() {
                   {isAdded ? (
                     <>
                       <Check className="w-4 h-4" />
-                      Added to Cart
+                      Ajouté au panier
                     </>
                   ) : (
-                    "Add to Cart"
+                    "Ajouter au panier"
                   )}
-                </button>
-                <button
-                  type="button"
-                  className="flex-1 inline-flex items-center justify-center gap-2 bg-transparent border border-foreground/20 text-foreground px-8 py-4 rounded-full text-sm tracking-wide boty-transition hover:bg-foreground/5"
-                >
-                  Buy Now
                 </button>
               </div>
 
@@ -265,7 +258,7 @@ export default function ProductPage() {
                     key={benefit.label}
                     className="flex flex-col items-center gap-2 p-4 boty-shadow bg-transparent shadow-none rounded-md"
                   >
-                    <benefit.icon className="w-5 h-5 text-primary" />
+                    <benefit.icon className="w-5 h-5 text-[#572D15]" />
                     <span className="text-xs text-muted-foreground text-center">{benefit.label}</span>
                   </div>
                 ))}

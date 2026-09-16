@@ -25,33 +25,33 @@ export function Hero() {
             objectFit: 'cover'
           }}
         >
-          <source src="/movie/243647_small.mp4" type="video/mp4" />
+          <source src="/movie/247338.mp4" type="video/mp4" />
         </video>
         {/* Bottom fade gradient */}
         <div className="absolute bottom-0 left-0 right-0 h-[60%] bg-gradient-to-t from-background via-background/50 to-transparent" />
       </div>
 
       {/* Content */}
-      <div className="relative z-10 w-full pt-20 mr-14 lg:mr-0">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+      <div className="relative z-10 w-full pt-20 lg:pt-24 mr-0 lg:mr-14">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="w-full lg:max-w-xl mx-auto lg:mx-0 text-center lg:text-left">
-            <span className="text-sm uppercase mb-6 block text-[#572D15] animate-blur-in opacity-0 tracking-normal" style={{ animationDelay: '0.2s', animationFillMode: 'forwards' }}>
+            <span className="text-xs sm:text-sm uppercase mb-4 sm:mb-6 block text-[#572D15] animate-blur-in opacity-0 tracking-normal" style={{ animationDelay: '0.2s', animationFillMode: 'forwards' }}>
               Créateur d'événements mémorables
             </span>
-            <h2 className="font-serif text-5xl md:text-6xl lg:text-7xl leading-[1.1] mb-6 text-balance text-[#572D15]">
+            <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl leading-[1.1] mb-4 sm:mb-6 text-balance text-[#572D15]">
               <span className="block animate-blur-in opacity-0 font-semibold" style={{ animationDelay: '0.4s', animationFillMode: 'forwards' }}>Box cadeaux</span>
-              <span className="block animate-blur-in opacity-0 font-semibold xl:text-9xl text-7xl" style={{ animationDelay: '0.6s', animationFillMode: 'forwards' }}>personnalisées.</span>
+              <span className="block animate-blur-in opacity-0 font-semibold text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-7xl" style={{ animationDelay: '0.6s', animationFillMode: 'forwards' }}>personnalisées.</span>
             </h2>
-            <p className="text-lg leading-relaxed mb-10 max-w-md mx-auto lg:mx-0 text-[#572D15] animate-blur-in opacity-0" style={{ animationDelay: '0.8s', animationFillMode: 'forwards' }}>
+            <p className="text-sm sm:text-base lg:text-lg leading-relaxed mb-6 sm:mb-8 lg:mb-10 max-w-md mx-auto lg:mx-0 text-[#572D15] animate-blur-in opacity-0" style={{ animationDelay: '0.8s', animationFillMode: 'forwards' }}>
               Transformez chaque occasion en moment inoubliable avec nos box événements personnalisées, pour particuliers et entreprises.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start animate-blur-in opacity-0" style={{ animationDelay: '1s', animationFillMode: 'forwards' }}>
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start animate-blur-in opacity-0" style={{ animationDelay: '1s', animationFillMode: 'forwards' }}>
               <Link
                 href="/shop"
-                className="group inline-flex items-center justify-center gap-3 bg-primary text-primary-foreground px-8 py-4 rounded-full text-sm tracking-wide boty-transition hover:bg-primary/90 boty-shadow"
+                className="group inline-flex items-center justify-center gap-2 sm:gap-3 bg-primary text-primary-foreground px-6 sm:px-8 py-3 sm:py-4 rounded-full text-xs sm:text-sm tracking-wide boty-transition hover:bg-primary/90 boty-shadow"
               >
                 Découvrir nos offres
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 boty-transition" />
+                <ArrowRight className="w-3 h-3 sm:w-4 sm:h-4 group-hover:translate-x-1 boty-transition" />
               </Link>
             </div>
           </div>

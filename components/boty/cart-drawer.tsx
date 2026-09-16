@@ -12,12 +12,12 @@ import {
   DrawerTitle,
 } from "@/components/ui/drawer"
 import { useCart } from "./cart-context"
+import { CheckoutModal } from "./checkout-modal"
+import { useState } from "react"
 
 export function CartDrawer() {
-  const { items, removeItem, updateQuantity, isOpen, setIsOpen, itemCount, subtotal } = useCart()
-
-  const shipping: number = 0
-  const total = subtotal + shipping
+  const { items, removeItem, updateQuantity, isOpen, setIsOpen, itemCount, subtotal, clearCart } = useCart()
+  const [showCheckout, setShowCheckout] = useState(false)
 
   return (
     <Drawer open={isOpen} onOpenChange={setIsOpen} direction="right">
@@ -114,20 +114,21 @@ export function CartDrawer() {
               </div>
               <div className="flex justify-between text-muted-foreground">
                 <span>Livraison</span>
-                <span>{shipping === 0 ? 'Offerte' : `${shipping.toLocaleString()} FCFA`}</span>
+                <span>Offerte</span>
               </div>
               <div className="flex justify-between text-base font-medium text-foreground pt-2 border-t border-border/50">
                 <span>Total</span>
-                <span>{total.toLocaleString()} FCFA</span>
+                <span>{subtotal.toLocaleString()} FCFA</span>
               </div>
             </div>
 
             {/* Checkout Button */}
             <button
               type="button"
+              onClick={() => setShowCheckout(true)}
               className="w-full bg-primary text-primary-foreground py-4 rounded-full font-medium hover:bg-primary/90 boty-transition"
             >
-Commander sur WhatsApp
+              Commander sur WhatsApp
             </button>
 
             <DrawerClose asChild>
@@ -141,6 +142,7 @@ Commander sur WhatsApp
           </DrawerFooter>
         )}
       </DrawerContent>
+      <CheckoutModal isOpen={showCheckout} onClose={() => setShowCheckout(false)} />
     </Drawer>
   )
 }
