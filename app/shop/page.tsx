@@ -6,201 +6,17 @@ import Link from "next/link"
 import { ShoppingBag, SlidersHorizontal, X } from "lucide-react"
 import { Header } from "@/components/boty/header"
 import { Footer } from "@/components/boty/footer"
-
-const products = [
-  // Catalogue Femme
-  {
-    id: "femme-1",
-    name: "Box Femme Élégance",
-    description: "Collection exclusive pour les moments spéciaux",
-    price: 25000,
-    originalPrice: null,
-    image: "/image/shop/catalogue-femme/IMG_2287.JPG",
-    badge: "Meilleure vente",
-    category: "femme"
-  },
-  {
-    id: "femme-2",
-    name: "Coffret Femme Premium",
-    description: "Set de luxe pour célébrer en beauté",
-    price: 35000,
-    originalPrice: null,
-    image: "/image/shop/catalogue-femme/IMG_2288.JPG",
-    badge: null,
-    category: "femme"
-  },
-  {
-    id: "femme-3",
-    name: "Box Femme Romantique",
-    description: "Création délicate pour les âmes romantiques",
-    price: 28000,
-    originalPrice: null,
-    image: "/image/shop/catalogue-femme/IMG_2289.JPG",
-    badge: "Nouveau",
-    category: "femme"
-  },
-  {
-    id: "femme-4",
-    name: "Coffret Femme Soirée",
-    description: "Kit parfait pour vos événements élégants",
-    price: 40000,
-    originalPrice: 50000,
-    image: "/image/shop/catalogue-femme/IMG_2692.JPG",
-    badge: "Promo",
-    category: "femme"
-  },
-  {
-    id: "femme-5",
-    name: "Box Femme Classic",
-    description: "Collection classique pour femmes exigeantes",
-    price: 22000,
-    originalPrice: null,
-    image: "/image/shop/catalogue-femme/IMG_2693.JPG",
-    badge: null,
-    category: "femme"
-  },
-  {
-    id: "femme-6",
-    name: "Coffret Femme Luxe",
-    description: "Création luxueuse pour les grandes occasions",
-    price: 45000,
-    originalPrice: null,
-    image: "/image/shop/catalogue-femme/IMG_3625.JPG",
-    badge: "Meilleure vente",
-    category: "femme"
-  },
-  // Catalogue Homme
-  {
-    id: "homme-1",
-    name: "Box Homme Classique",
-    description: "Collection intemporelle pour hommes exigeants",
-    price: 30000,
-    originalPrice: null,
-    image: "/image/shop/catalogue-homme/IMG_2290.JPG",
-    badge: null,
-    category: "homme"
-  },
-  {
-    id: "homme-2",
-    name: "Coffret Homme Executive",
-    description: "Set premium pour le professionnel accompli",
-    price: 45000,
-    originalPrice: 55000,
-    image: "/image/shop/catalogue-homme/IMG_2684.JPG",
-    badge: "Promo",
-    category: "homme"
-  },
-  {
-    id: "homme-3",
-    name: "Box Homme Sportif",
-    description: "Collection dynamique pour hommes actifs",
-    price: 32000,
-    originalPrice: null,
-    image: "/image/shop/catalogue-homme/IMG_2685.JPG",
-    badge: "Meilleure vente",
-    category: "homme"
-  },
-  {
-    id: "homme-4",
-    name: "Coffret Homme Luxe",
-    description: "Création exclusive pour les moments précieux",
-    price: 55000,
-    originalPrice: null,
-    image: "/image/shop/catalogue-homme/IMG_2859.JPG",
-    badge: null,
-    category: "homme"
-  },
-  {
-    id: "homme-5",
-    name: "Box Homme Business",
-    description: "Kit professionnel pour hommes d'affaires",
-    price: 38000,
-    originalPrice: null,
-    image: "/image/shop/catalogue-homme/IMG_2870.JPG",
-    badge: "Nouveau",
-    category: "homme"
-  },
-  {
-    id: "homme-6",
-    name: "Coffret Homme Signature",
-    description: "Notre création signature exclusive",
-    price: 60000,
-    originalPrice: null,
-    image: "/image/shop/catalogue-homme/IMG_3768.JPG",
-    badge: null,
-    category: "homme"
-  },
-  // Bouquets Argent
-  {
-    id: "bouquet-1",
-    name: "Bouquet Argent Classic",
-    description: "Arrangement floral élégant et raffiné",
-    price: 20000,
-    originalPrice: null,
-    image: "/image/shop/catalogue-bouquet-argent/IMG_5296.jpg",
-    badge: "Nouveau",
-    category: "bouquets"
-  },
-  {
-    id: "bouquet-2",
-    name: "Bouquet Argent Premium",
-    description: "Composition florale luxueuse et exceptionnelle",
-    price: 35000,
-    originalPrice: null,
-    image: "/image/shop/catalogue-bouquet-argent/IMG_5297.jpg",
-    badge: null,
-    category: "bouquets"
-  },
-  {
-    id: "bouquet-3",
-    name: "Bouquet Argent Royal",
-    description: "Création majestueuse pour les grandes occasions",
-    price: 50000,
-    originalPrice: null,
-    image: "/image/shop/catalogue-bouquet-argent/IMG_5298.jpg",
-    badge: null,
-    category: "bouquets"
-  },
-  {
-    id: "bouquet-4",
-    name: "Bouquet Argent Signature",
-    description: "Notre création signature, inoubliable et unique",
-    price: 65000,
-    originalPrice: null,
-    image: "/image/shop/catalogue-bouquet-argent/IMG_5299.jpg",
-    badge: "Meilleure vente",
-    category: "bouquets"
-  },
-  {
-    id: "bouquet-5",
-    name: "Bouquet Argent Élégance",
-    description: "Arrangement sophistiqué pour moments précieux",
-    price: 28000,
-    originalPrice: null,
-    image: "/image/shop/catalogue-bouquet-argent/IMG_5301.jpg",
-    badge: null,
-    category: "bouquets"
-  },
-  {
-    id: "bouquet-6",
-    name: "Bouquet Argent Prestige",
-    description: "Composition haut de gamme pour événements luxe",
-    price: 75000,
-    originalPrice: 90000,
-    image: "/image/shop/catalogue-bouquet-argent/IMG_5317.jpg",
-    badge: "Promo",
-    category: "bouquets"
-  }
-]
-
-const categories = ["all", "femme", "homme", "bouquets"]
+import { useCart } from "@/components/boty/cart-context"
+import { getAllProducts, type Product, filterCategories } from "@/lib/products"
 
 export default function ShopPage() {
-  const [selectedCategory, setSelectedCategory] = useState("all")
+  const [selectedCategory, setSelectedCategory] = useState<(typeof filterCategories)[number]>("all")
   const [showFilters, setShowFilters] = useState(false)
   const [isVisible, setIsVisible] = useState(false)
   const gridRef = useRef<HTMLDivElement>(null)
+  const { addItem } = useCart()
 
+  const products = getAllProducts()
   const filteredProducts = selectedCategory === "all"
     ? products
     : products.filter(p => p.category === selectedCategory)
@@ -265,7 +81,7 @@ export default function ShopPage() {
 
             {/* Desktop Categories */}
             <div className="hidden lg:flex items-center gap-2">
-              {categories.map((category) => (
+              {filterCategories.map((category) => (
                 <button
                   key={category}
                   type="button"
@@ -301,7 +117,7 @@ export default function ShopPage() {
                   </button>
                 </div>
                 <div className="space-y-3">
-                  {categories.map((category) => (
+                  {filterCategories.map((category) => (
                     <button
                       key={category}
                       type="button"
@@ -350,11 +166,12 @@ function ProductCard({
   index, 
   isVisible 
 }: { 
-  product: typeof products[0]
+  product: Product
   index: number
   isVisible: boolean
 }) {
   const [imageLoaded, setImageLoaded] = useState(false)
+  const { addItem } = useCart()
 
   return (
     <Link
@@ -403,6 +220,14 @@ function ProductCard({
             className="absolute bottom-4 right-4 w-12 h-12 rounded-full bg-background/90 backdrop-blur-sm flex items-center justify-center opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 boty-transition boty-shadow"
             onClick={(e) => {
               e.preventDefault()
+              e.stopPropagation()
+              addItem({
+                id: product.id,
+                name: product.name,
+                description: product.description,
+                price: product.price,
+                image: product.image
+              })
             }}
             aria-label="Ajouter au panier"
           >

@@ -5,140 +5,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { ShoppingBag } from "lucide-react"
 import { useCart } from "./cart-context"
-
-type Category = "femme" | "homme" | "bouquets"
-
-const products = [
-  // Catalogue Femme
-  {
-    id: "femme-1",
-    name: "Box Femme Élégance",
-    description: "Collection exclusive pour les moments spéciaux",
-    price: 25000,
-    originalPrice: null,
-    image: "/image/shop/catalogue-femme/IMG_2287.JPG",
-    badge: "Meilleure vente",
-    category: "femme" as Category
-  },
-  {
-    id: "femme-2",
-    name: "Coffret Femme Premium",
-    description: "Set de luxe pour célébrer en beauté",
-    price: 35000,
-    originalPrice: null,
-    image: "/image/shop/catalogue-femme/IMG_2288.JPG",
-    badge: null,
-    category: "femme" as Category
-  },
-  {
-    id: "femme-3",
-    name: "Box Femme Romantique",
-    description: "Création délicate pour les âmes romantiques",
-    price: 28000,
-    originalPrice: null,
-    image: "/image/shop/catalogue-femme/IMG_2289.JPG",
-    badge: "Nouveau",
-    category: "femme" as Category
-  },
-  {
-    id: "femme-4",
-    name: "Coffret Femme Soirée",
-    description: "Kit parfait pour vos événements élégants",
-    price: 40000,
-    originalPrice: 50000,
-    image: "/image/shop/catalogue-femme/IMG_2692.JPG",
-    badge: "Promo",
-    category: "femme" as Category
-  },
-  // Catalogue Homme
-  {
-    id: "homme-1",
-    name: "Box Homme Classique",
-    description: "Collection intemporelle pour hommes exigeants",
-    price: 30000,
-    originalPrice: null,
-    image: "/image/shop/catalogue-homme/IMG_2290.JPG",
-    badge: null,
-    category: "homme" as Category
-  },
-  {
-    id: "homme-2",
-    name: "Coffret Homme Executive",
-    description: "Set premium pour le professionnel accompli",
-    price: 45000,
-    originalPrice: 55000,
-    image: "/image/shop/catalogue-homme/IMG_2684.JPG",
-    badge: "Promo",
-    category: "homme" as Category
-  },
-  {
-    id: "homme-3",
-    name: "Box Homme Sportif",
-    description: "Collection dynamique pour hommes actifs",
-    price: 32000,
-    originalPrice: null,
-    image: "/image/shop/catalogue-homme/IMG_2685.JPG",
-    badge: "Meilleure vente",
-    category: "homme" as Category
-  },
-  {
-    id: "homme-4",
-    name: "Coffret Homme Luxe",
-    description: "Création exclusive pour les moments précieux",
-    price: 55000,
-    originalPrice: null,
-    image: "/image/shop/catalogue-homme/IMG_2859.JPG",
-    badge: null,
-    category: "homme" as Category
-  },
-  // Bouquets Argent
-  {
-    id: "bouquet-1",
-    name: "Bouquet Argent Classic",
-    description: "Arrangement floral élégant et raffiné",
-    price: 20000,
-    originalPrice: null,
-    image: "/image/shop/catalogue-bouquet-argent/IMG_5296.jpg",
-    badge: "Nouveau",
-    category: "bouquets" as Category
-  },
-  {
-    id: "bouquet-2",
-    name: "Bouquet Argent Premium",
-    description: "Composition florale luxueuse et exceptionnelle",
-    price: 35000,
-    originalPrice: null,
-    image: "/image/shop/catalogue-bouquet-argent/IMG_5297.jpg",
-    badge: null,
-    category: "bouquets" as Category
-  },
-  {
-    id: "bouquet-3",
-    name: "Bouquet Argent Royal",
-    description: "Création majestueuse pour les grandes occasions",
-    price: 50000,
-    originalPrice: null,
-    image: "/image/shop/catalogue-bouquet-argent/IMG_5298.jpg",
-    badge: null,
-    category: "bouquets" as Category
-  },
-  {
-    id: "bouquet-4",
-    name: "Bouquet Argent Signature",
-    description: "Notre création signature, inoubliable et unique",
-    price: 65000,
-    originalPrice: null,
-    image: "/image/shop/catalogue-bouquet-argent/IMG_5299.jpg",
-    badge: "Meilleure vente",
-    category: "bouquets" as Category
-  }
-]
-
-const categories = [
-  { value: "femme" as Category, label: "Femme" },
-  { value: "homme" as Category, label: "Homme" },
-  { value: "bouquets" as Category, label: "Bouquets Argent" }
-]
+import { products, categories, getProductsByCategory, type Category, type Product } from "@/lib/products"
 
 export function ProductGrid() {
   const [selectedCategory, setSelectedCategory] = useState<Category>("femme")
@@ -148,8 +15,8 @@ export function ProductGrid() {
   const gridRef = useRef<HTMLDivElement>(null)
   const headerRef = useRef<HTMLDivElement>(null)
   const { addItem } = useCart()
-  
-  const filteredProducts = products.filter(product => product.category === selectedCategory)
+
+  const filteredProducts = getProductsByCategory(selectedCategory)
 
   const handleCategoryChange = (category: Category) => {
     if (category !== selectedCategory) {
@@ -165,7 +32,7 @@ export function ProductGrid() {
 
   // Preload all product images on mount
   useEffect(() => {
-    products.forEach((product) => {
+    Object.values(products).forEach((product: Product) => {
       const img = new window.Image()
       img.src = product.image
     })
