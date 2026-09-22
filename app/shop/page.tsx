@@ -8,6 +8,7 @@ import { Header } from "@/components/boty/header"
 import { Footer } from "@/components/boty/footer"
 import { useCart } from "@/components/boty/cart-context"
 import { getAllProducts, type Product, filterCategories } from "@/lib/products"
+import SpecialOrderBubble from "@/components/special-order-bubble/SpecialOrderBubble"
 
 export default function ShopPage() {
   const [selectedCategory, setSelectedCategory] = useState<(typeof filterCategories)[number]>("all")
@@ -157,6 +158,7 @@ export default function ShopPage() {
       </div>
 
       <Footer />
+      <SpecialOrderBubble />
     </main>
   )
 }
