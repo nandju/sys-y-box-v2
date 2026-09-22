@@ -7,6 +7,7 @@ import { Testimonials } from "@/components/boty/testimonials"
 import { CTABanner } from "@/components/boty/cta-banner"
 import { Newsletter } from "@/components/boty/newsletter"
 import { Footer } from "@/components/boty/footer"
+import SpecialOrderBubble from "@/components/special-order-bubble/SpecialOrderBubble"
 
 export default function HomePage() {
   return (
@@ -20,6 +21,7 @@ export default function HomePage() {
       <CTABanner />
       <Newsletter />
       <Footer />
+      <SpecialOrderBubble />
     </main>
   )
 }
