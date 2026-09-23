@@ -1,0 +1,312 @@
+.section {
+  /* Palette reprise de la bulle "Commande spéciale" (mêmes codes que SpecialOrderBubble) */
+  --dd-brown-900: #3b2013; /* brun très foncé — dégradé du bandeau, texte, boutons */
+  --dd-brown-700: #7a4a26; /* brun — dégradé du bandeau, hover */
+  --dd-brown-500: #b97a45; /* brun orangé — accents, scrollbar */
+  --dd-tan-100: #f1d9be; /* beige clair — bouton "voir tous les détails" */
+  --dd-tan-300: #d9b48a; /* tan — hover du bouton, bordures */
+  --dd-pink-400: #ec9c92; /* rose — badge de réduction */
+  --dd-cream: #f7efe4; /* fond crème */
+  --dd-card-bg: #ffffff;
+  --dd-text-dark: #3b2013;
+  --dd-text-muted: #8a6f5a;
+  --dd-star-gold: #d9a441;
+  --dd-btn-dark: #3b2013;
+  --dd-time-box: #2a160c;
+
+  border-radius: 20px;
+  overflow: hidden;
+  margin-right: 20px;
+  margin-left: 20px;
+  font-family: inherit;
+  box-shadow: 0 12px 32px rgba(61, 26, 120, 0.25);
+}
+
+/* ---------- Bandeau du haut ---------- */
+.header {
+  background: linear-gradient(120deg, var(--dd-brown-900), var(--dd-brown-700));
+  padding: 20px 24px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  color: #fff;
+}
+
+.headerLeft {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.lightning {
+  font-size: 26px;
+  filter: drop-shadow(0 0 6px rgba(255, 224, 102, 0.8));
+}
+
+.title {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.subtitle {
+  margin: 2px 0 0;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.headerRight {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.countdown {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+}
+
+.countdownLabel {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.75);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.timeBoxes {
+  display: flex;
+  gap: 8px;
+}
+
+.timeBox {
+  background: var(--dd-time-box);
+  border-radius: 8px;
+  padding: 6px 10px;
+  min-width: 44px;
+  text-align: center;
+}
+
+.timeValue {
+  display: block;
+  font-size: 16px;
+  font-weight: 700;
+  color: #fff;
+  font-variant-numeric: tabular-nums;
+}
+
+.timeUnit {
+  display: block;
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.6);
+  margin-top: 2px;
+}
+
+.detailsButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--dd-tan-100);
+  color: var(--dd-brown-900);
+  border: none;
+  border-radius: 999px;
+  padding: 12px 20px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.2s ease;
+}
+
+.detailsButton:hover {
+  background: var(--dd-tan-300);
+}
+
+/* ---------- Bande de produits ---------- */
+/* Masquée par défaut : ne s'affiche (voir DailyDealsSection.tsx, rendu
+   conditionnel sur `expanded`) qu'au clic sur "Voir tous les détails",
+   avec un effet d'entrée en fondu + glissement. */
+.dealsTrack {
+  background: var(--dd-brown-900);
+  padding: 20px 32px;
+  margin: 0 16px;
+  border-radius: 0 0 16px 16px;
+  gap: 16px;
+
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x proximity;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: var(--dd-brown-500) transparent;
+
+  animation: dealsReveal 0.45s ease forwards;
+}
+
+.dealsTrack::-webkit-scrollbar {
+  height: 8px;
+}
+
+.dealsTrack::-webkit-scrollbar-thumb {
+  background: var(--dd-brown-500);
+  border-radius: 999px;
+}
+
+.dealsTrack .card {
+  flex: 0 0 220px;
+  scroll-snap-align: start;
+}
+
+@keyframes dealsReveal {
+  from {
+    opacity: 0;
+    transform: translateY(-12px) scaleY(0.96);
+    transform-origin: top;
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scaleY(1);
+    transform-origin: top;
+  }
+}
+
+/* ---------- Carte produit ---------- */
+.card {
+  background: var(--dd-card-bg);
+  border-radius: 16px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.imageWrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  background: #f1edf9;
+}
+
+.productImage {
+  object-fit: cover;
+}
+
+.discountBadge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 1;
+  background: var(--dd-pink-400);
+  color: var(--dd-brown-900);
+  font-size: 12px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 999px;
+}
+
+.cardBody {
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.productName {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--dd-text-dark);
+  min-height: 2.6em;
+}
+
+.ratingRow {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.stars {
+  color: var(--dd-star-gold);
+  font-size: 13px;
+  letter-spacing: 1px;
+}
+
+.starEmpty {
+  color: #e5e0f0;
+}
+
+.ratingValue {
+  font-size: 12px;
+  color: var(--dd-text-muted);
+}
+
+.priceRow {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.price {
+  font-size: 17px;
+  font-weight: 800;
+  color: var(--dd-text-dark);
+}
+
+.oldPrice {
+  font-size: 13px;
+  color: var(--dd-text-muted);
+  text-decoration: line-through;
+}
+
+.addToCartButton {
+  margin-top: 8px;
+  background: var(--dd-btn-dark);
+  color: #fff;
+  border: none;
+  border-radius: 999px;
+  padding: 10px 12px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: filter 0.2s ease;
+}
+
+.addToCartButton:hover {
+  filter: brightness(1.2);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .headerRight {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .dealsTrack {
+    margin: 0 8px;
+    padding: 16px;
+  }
+
+  .dealsTrack .card {
+    flex: 0 0 200px;
+  }
+}
+
+@media (max-width: 480px) {
+  .detailsButton {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .countdown {
+    width: 100%;
+  }
+}

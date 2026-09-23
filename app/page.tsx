@@ -8,6 +8,7 @@ import { CTABanner } from "@/components/boty/cta-banner"
 import { Newsletter } from "@/components/boty/newsletter"
 import { Footer } from "@/components/boty/footer"
 import SpecialOrderBubble from "@/components/special-order-bubble/SpecialOrderBubble"
+import DailyDealsSection from "@/components/daily-deals/Dailydealssection"
 
 export default function HomePage() {
   return (
@@ -15,6 +16,7 @@ export default function HomePage() {
       <Header />
       <Hero />
       <TrustBadges />
+      <DailyDealsSection />
       <ProductGrid />
       <FeatureSection />
       <Testimonials />
