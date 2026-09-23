@@ -1,18 +1,38 @@
 .section {
-  /* Palette reprise de la bulle "Commande spéciale" (mêmes codes que SpecialOrderBubble) */
-  --dd-brown-900: #3b2013; /* brun très foncé — dégradé du bandeau, texte, boutons */
-  --dd-brown-700: #7a4a26; /* brun — dégradé du bandeau, hover */
-  --dd-brown-500: #b97a45; /* brun orangé — accents, scrollbar */
-  --dd-tan-100: #f1d9be; /* beige clair — bouton "voir tous les détails" */
-  --dd-tan-300: #d9b48a; /* tan — hover du bouton, bordures */
-  --dd-pink-400: #ec9c92; /* rose — badge de réduction */
-  --dd-cream: #f7efe4; /* fond crème */
-  --dd-card-bg: #ffffff;
-  --dd-text-dark: #3b2013;
-  --dd-text-muted: #8a6f5a;
-  --dd-star-gold: #d9a441;
-  --dd-btn-dark: #3b2013;
-  --dd-time-box: #2a160c;
+
+/* Palette PROMOTION — rouge d'urgence
+   Objectif : attirer immédiatement l'attention
+   et communiquer que l'offre est limitée dans le temps */
+
+--dd-red-dark: #A80000;      /* rouge foncé — profondeur */
+--dd-red-900: #C00000;       /* rouge intense */
+--dd-red-700: #E00000;       /* rouge principal */
+--dd-red-500: #FF1A1A;       /* rouge vif — éléments importants */
+--dd-red-300: #FF4D4D;       /* rouge clair — accents */
+
+--dd-brown-900: #C00000;     /* chocolat — texte secondaire */
+/* --dd-brown-900: #3B2013;     chocolat — texte secondaire */
+--dd-brown-700: #FF1A1A;     /* chocolat rougeâtre */
+/* --dd-brown-700: #5A2A18;     chocolat rougeâtre */
+
+--dd-tan-100: #FFF1F1;       /* blanc légèrement rosé */
+--dd-tan-300: #FFCCCC;       /* bordures / hover */
+
+--dd-cream: #FFF7F7;         /* fond très clair */
+--dd-card-bg: #FFFFFF;
+
+--dd-text-dark: #3B2013;
+--dd-text-muted: #7A5A50;
+
+--dd-star-gold: #D9A441;
+
+/* Boutons */
+--dd-btn-dark: #A80000;
+
+/* Compteur : urgence maximale */
+--dd-time-box: #7A0000;
+
+ --dd-time-box: #2a160c;
 
   border-radius: 20px;
   overflow: hidden;

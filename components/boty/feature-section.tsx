@@ -110,7 +110,7 @@ export function FeatureSection() {
               playsInline
               className="absolute inset-0 w-full h-full object-cover"
             >
-              <source src="/movie/13236-246463985_small.mp4" type="video/mp4" />
+              <source src="/movie/second-to-last-movie.mp4" type="video/mp4" />
             </video>
             {/* Overlay Card */}
             <div className="absolute bottom-8 left-8 right-8 bg-[#FCF8EF] p-6 shadow-lg rounded-xl">
@@ -186,7 +186,7 @@ export function FeatureSection() {
               playsInline
               className="absolute inset-0 w-full h-full object-cover scale-[1.02]"
             >
-              <source src="/movie/340787.mp4" type="video/mp4" />
+              <source src="/movie/second-movie.mp4" type="video/mp4" />
             </video>
             {/* Overlay for text readability */}
             <div className="absolute inset-0 bg-transparent" />
@@ -222,7 +222,7 @@ export function FeatureSection() {
               playsInline
               className="absolute inset-0 w-full h-full object-cover"
             >
-              <source src="/movie/247338.mp4" type="video/mp4" />
+              <source src="/movie/last-movie.mp4" type="video/mp4" />
             </video>
           </div>
 
