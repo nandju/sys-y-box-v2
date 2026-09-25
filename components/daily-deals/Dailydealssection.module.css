@@ -1,308 +1,228 @@
 .section {
-
-/* Palette PROMOTION — rouge d'urgence
-   Objectif : attirer immédiatement l'attention
-   et communiquer que l'offre est limitée dans le temps */
-
---dd-red-dark: #A80000;      /* rouge foncé — profondeur */
---dd-red-900: #C00000;       /* rouge intense */
---dd-red-700: #E00000;       /* rouge principal */
---dd-red-500: #FF1A1A;       /* rouge vif — éléments importants */
---dd-red-300: #FF4D4D;       /* rouge clair — accents */
-
---dd-brown-900: #C00000;     /* chocolat — texte secondaire */
-/* --dd-brown-900: #3B2013;     chocolat — texte secondaire */
---dd-brown-700: #FF1A1A;     /* chocolat rougeâtre */
-/* --dd-brown-700: #5A2A18;     chocolat rougeâtre */
-
---dd-tan-100: #FFF1F1;       /* blanc légèrement rosé */
---dd-tan-300: #FFCCCC;       /* bordures / hover */
-
---dd-cream: #FFF7F7;         /* fond très clair */
---dd-card-bg: #FFFFFF;
-
---dd-text-dark: #3B2013;
---dd-text-muted: #7A5A50;
-
---dd-star-gold: #D9A441;
-
-/* Boutons */
---dd-btn-dark: #A80000;
-
-/* Compteur : urgence maximale */
---dd-time-box: #7A0000;
-
- --dd-time-box: #2a160c;
-
-  border-radius: 20px;
-  overflow: hidden;
-  margin-right: 20px;
-  margin-left: 20px;
-  font-family: inherit;
-  box-shadow: 0 12px 32px rgba(61, 26, 120, 0.25);
+  width: 100%;
+  background: #fff;
+  padding: 20px 0;
+  margin: 40px 0;
 }
 
-/* ---------- Bandeau du haut ---------- */
+/* Header avec fond rouge */
 .header {
-  background: linear-gradient(120deg, var(--dd-brown-900), var(--dd-brown-700));
-  padding: 20px 24px;
   display: flex;
-  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  gap: 16px;
-  color: #fff;
+  background: #dc2626;
+  padding: 16px 24px;
+  margin: 0 24px;
+  border-radius: 8px;
 }
 
 .headerLeft {
   display: flex;
   align-items: center;
-  gap: 12px;
-}
-
-.lightning {
-  font-size: 26px;
-  filter: drop-shadow(0 0 6px rgba(255, 224, 102, 0.8));
+  gap: 16px;
 }
 
 .title {
+  color: #fff;
+  font-size: 24px;
+  font-weight: 700;
   margin: 0;
-  font-size: 20px;
-  font-weight: 800;
-}
-
-.subtitle {
-  margin: 2px 0 0;
-  font-size: 13px;
-  color: rgba(255, 255, 255, 0.8);
+  white-space: nowrap;
 }
 
 .headerRight {
   display: flex;
   align-items: center;
-  gap: 20px;
-  flex-wrap: wrap;
+  gap: 16px;
 }
 
 .countdown {
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 6px;
-}
-
-.countdownLabel {
-  font-size: 11px;
-  color: rgba(255, 255, 255, 0.75);
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-}
-
-.timeBoxes {
-  display: flex;
-  gap: 8px;
-}
-
-.timeBox {
-  background: var(--dd-time-box);
-  border-radius: 8px;
-  padding: 6px 10px;
-  min-width: 44px;
-  text-align: center;
-}
-
-.timeValue {
-  display: block;
-  font-size: 16px;
-  font-weight: 700;
-  color: #fff;
-  font-variant-numeric: tabular-nums;
-}
-
-.timeUnit {
-  display: block;
-  font-size: 10px;
-  color: rgba(255, 255, 255, 0.6);
-  margin-top: 2px;
-}
-
-.detailsButton {
-  display: inline-flex;
   align-items: center;
-  gap: 6px;
-  background: var(--dd-tan-100);
-  color: var(--dd-brown-900);
+}
+
+.countdownTime {
+  color: #fff;
+  font-size: 18px;
+  font-weight: 600;
+  font-family: monospace;
+  white-space: nowrap;
+}
+
+.arrowButton {
+  background: #fff;
+  color: #dc2626;
   border: none;
-  border-radius: 999px;
-  padding: 12px 20px;
-  font-size: 14px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 24px;
   font-weight: 700;
   cursor: pointer;
-  white-space: nowrap;
-  transition: background 0.2s ease;
-}
-
-.detailsButton:hover {
-  background: var(--dd-tan-300);
-}
-
-/* ---------- Bande de produits ---------- */
-/* Masquée par défaut : ne s'affiche (voir DailyDealsSection.tsx, rendu
-   conditionnel sur `expanded`) qu'au clic sur "Voir tous les détails",
-   avec un effet d'entrée en fondu + glissement. */
-.dealsTrack {
-  background: var(--dd-brown-900);
-  padding: 20px 32px;
-  margin: 0 16px;
-  border-radius: 0 0 16px 16px;
-  gap: 16px;
-
   display: flex;
-  overflow-x: auto;
-  scroll-snap-type: x proximity;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: thin;
-  scrollbar-color: var(--dd-brown-500) transparent;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
 
-  animation: dealsReveal 0.45s ease forwards;
+.arrowButton:hover {
+  transform: scale(1.1);
+  background: #f5f5f5;
+}
+
+/* Horizontal scroll track */
+.dealsTrack {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  padding: 24px;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: thin;
+  scrollbar-color: #dc2626 #f5f5f5;
 }
 
 .dealsTrack::-webkit-scrollbar {
   height: 8px;
 }
 
+.dealsTrack::-webkit-scrollbar-track {
+  background: #f5f5f5;
+  border-radius: 4px;
+}
+
 .dealsTrack::-webkit-scrollbar-thumb {
-  background: var(--dd-brown-500);
-  border-radius: 999px;
+  background: #dc2626;
+  border-radius: 4px;
 }
 
-.dealsTrack .card {
-  flex: 0 0 220px;
-  scroll-snap-align: start;
-}
-
-@keyframes dealsReveal {
-  from {
-    opacity: 0;
-    transform: translateY(-12px) scaleY(0.96);
-    transform-origin: top;
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0) scaleY(1);
-    transform-origin: top;
-  }
-}
-
-/* ---------- Carte produit ---------- */
+/* Product card */
 .card {
-  background: var(--dd-card-bg);
-  border-radius: 16px;
+  flex: 0 0 220px;
+  background: #fff;
+  border: 1px solid #e5e5e5;
+  border-radius: 8px;
   overflow: hidden;
-  display: flex;
-  flex-direction: column;
+  scroll-snap-align: start;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
 }
 
 .imageWrapper {
   position: relative;
   width: 100%;
-  aspect-ratio: 4 / 3;
-  background: #f1edf9;
+  aspect-ratio: 1;
+  background: #f5f5f5;
+  overflow: hidden;
 }
 
 .productImage {
   object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.card:hover .productImage {
+  transform: scale(1.05);
 }
 
 .discountBadge {
   position: absolute;
-  top: 10px;
-  left: 10px;
-  z-index: 1;
-  background: var(--dd-pink-400);
-  color: var(--dd-brown-900);
+  top: 8px;
+  left: 8px;
+  background: #22c55e;
+  color: #fff;
+  padding: 4px 8px;
+  border-radius: 4px;
   font-size: 12px;
   font-weight: 700;
-  padding: 4px 10px;
-  border-radius: 999px;
+  z-index: 1;
 }
 
 .cardBody {
-  padding: 14px;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
+  padding: 12px;
+}
+
+.stockLabel {
+  display: block;
+  color: #6b7280;
+  font-size: 12px;
+  margin-bottom: 4px;
 }
 
 .productName {
-  margin: 0;
+  color: #1f2937;
   font-size: 14px;
   font-weight: 600;
-  color: var(--dd-text-dark);
-  min-height: 2.6em;
+  margin: 0 0 8px 0;
+  line-height: 1.3;
+  height: 36px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
 }
 
 .ratingRow {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 4px;
+  margin-bottom: 8px;
 }
 
 .stars {
-  color: var(--dd-star-gold);
-  font-size: 13px;
+  color: #fbbf24;
+  font-size: 14px;
   letter-spacing: 1px;
 }
 
 .starEmpty {
-  color: #e5e0f0;
+  color: #d1d5db;
 }
 
-.ratingValue {
+.reviewsCount {
+  color: #6b7280;
   font-size: 12px;
-  color: var(--dd-text-muted);
 }
 
 .priceRow {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   gap: 8px;
 }
 
 .price {
-  font-size: 17px;
-  font-weight: 800;
-  color: var(--dd-text-dark);
+  color: #dc2626;
+  font-size: 16px;
+  font-weight: 700;
 }
 
 .oldPrice {
-  font-size: 13px;
-  color: var(--dd-text-muted);
+  color: #9ca3af;
+  font-size: 14px;
   text-decoration: line-through;
 }
 
-.addToCartButton {
-  margin-top: 8px;
-  background: var(--dd-btn-dark);
-  color: #fff;
-  border: none;
-  border-radius: 999px;
-  padding: 10px 12px;
-  font-size: 13px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: filter 0.2s ease;
-}
-
-.addToCartButton:hover {
-  filter: brightness(1.2);
-}
-
-/* ---------- Responsive ---------- */
+/* Responsive */
 @media (max-width: 768px) {
+  .section {
+    padding: 16px 0;
+    margin: 24px 0;
+  }
+
   .header {
+    padding: 12px 16px;
+    margin: 0 16px;
     flex-direction: column;
+    gap: 12px;
     align-items: flex-start;
+  }
+
+  .title {
+    font-size: 18px;
   }
 
   .headerRight {
@@ -310,23 +230,76 @@
     justify-content: space-between;
   }
 
-  .dealsTrack {
-    margin: 0 8px;
-    padding: 16px;
+  .countdownTime {
+    font-size: 14px;
   }
 
-  .dealsTrack .card {
-    flex: 0 0 200px;
+  .arrowButton {
+    width: 32px;
+    height: 32px;
+    font-size: 18px;
+  }
+
+  .dealsTrack {
+    padding: 16px;
+    gap: 12px;
+  }
+
+  .card {
+    flex: 0 0 180px;
+  }
+
+  .productName {
+    font-size: 13px;
+    height: 32px;
+  }
+
+  .price {
+    font-size: 14px;
+  }
+
+  .oldPrice {
+    font-size: 12px;
   }
 }
 
 @media (max-width: 480px) {
-  .detailsButton {
-    width: 100%;
-    justify-content: center;
+  .header {
+    padding: 10px 12px;
+    margin: 0 12px;
   }
 
-  .countdown {
-    width: 100%;
+  .title {
+    font-size: 16px;
+  }
+
+  .countdownTime {
+    font-size: 12px;
+  }
+
+  .dealsTrack {
+    padding: 12px;
+    gap: 10px;
+  }
+
+  .card {
+    flex: 0 0 150px;
+  }
+
+  .cardBody {
+    padding: 10px;
+  }
+
+  .productName {
+    font-size: 12px;
+    height: 30px;
+  }
+
+  .price {
+    font-size: 13px;
+  }
+
+  .oldPrice {
+    font-size: 11px;
   }
 }

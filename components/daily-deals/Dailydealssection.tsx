@@ -5,18 +5,12 @@ import Image from "next/image";
 import styles from "./Dailydealssection.module.css";
 
 /**
- * Section "Offres du jour" / Daily Deals — SYS'Y BOX EVENTS (ou boutique)
- * ------------------------------------------------------------------
- * - Bandeau avec compte à rebours en temps réel
- * - Par défaut, la bande d'offres est entièrement masquée : seul le
- *   bandeau (titre, compte à rebours, bouton) est visible.
- * - Au clic sur "Voir tous les détails", toutes les offres apparaissent
- *   avec un effet d'entrée, en défilement horizontal illimité
- *   (autant d'articles que vous voulez dans `DEALS`).
- * - Prix actuel + prix barré + badge de réduction inclus.
- *
- * Remplacez le tableau `DEALS` par vos vrais produits, et les images
- * placeholder `/images/deals/xxx.jpg` par vos visuels.
+ * Section "Ventes Flash" / Daily Deals — SYS'Y BOX EVENTS
+ * ---------------------------------------------------
+ * - Bandeau rouge avec compte à rebours en temps réel
+ * - Liste horizontale de produits avec images, stock, étoiles, prix
+ * - Badge de réduction en vert
+ * - Design responsive et moderne
  */
 
 interface Deal {
@@ -27,8 +21,8 @@ interface Deal {
   oldPrice: number;
   rating: number;
   reviewsCount: number;
+  stock: number;
 }
-
 
 const DEALS: Deal[] = [
   {
@@ -39,6 +33,7 @@ const DEALS: Deal[] = [
     oldPrice: 35000,
     rating: 4.9,
     reviewsCount: 24,
+    stock: 12,
   },
   {
     id: "2",
@@ -48,6 +43,7 @@ const DEALS: Deal[] = [
     oldPrice: 45000,
     rating: 4.8,
     reviewsCount: 18,
+    stock: 8,
   },
   {
     id: "3",
@@ -57,6 +53,7 @@ const DEALS: Deal[] = [
     oldPrice: 65000,
     rating: 4.9,
     reviewsCount: 31,
+    stock: 5,
   },
   {
     id: "4",
@@ -66,6 +63,7 @@ const DEALS: Deal[] = [
     oldPrice: 40000,
     rating: 4.7,
     reviewsCount: 16,
+    stock: 15,
   },
   {
     id: "5",
@@ -75,6 +73,7 @@ const DEALS: Deal[] = [
     oldPrice: 55000,
     rating: 4.8,
     reviewsCount: 21,
+    stock: 9,
   },
   {
     id: "6",
@@ -84,6 +83,7 @@ const DEALS: Deal[] = [
     oldPrice: 28000,
     rating: 4.7,
     reviewsCount: 13,
+    stock: 20,
   },
   {
     id: "7",
@@ -93,6 +93,7 @@ const DEALS: Deal[] = [
     oldPrice: 75000,
     rating: 4.9,
     reviewsCount: 27,
+    stock: 7,
   },
   {
     id: "8",
@@ -102,10 +103,9 @@ const DEALS: Deal[] = [
     oldPrice: 110000,
     rating: 5.0,
     reviewsCount: 12,
+    stock: 3,
   },
 ];
-
-
 
 function discountPercent(price: number, oldPrice: number) {
   return Math.round(((oldPrice - price) / oldPrice) * 100);
@@ -166,74 +166,49 @@ function DealCard({ deal }: { deal: Deal }) {
         />
       </div>
       <div className={styles.cardBody}>
-        <p className={styles.productName}>{deal.name}</p>
+        <span className={styles.stockLabel}>{deal.stock} articles en stock</span>
+        <h3 className={styles.productName}>{deal.name}</h3>
         <div className={styles.ratingRow}>
           <StarRating rating={deal.rating} />
-          <span className={styles.ratingValue}>({deal.rating})</span>
+          <span className={styles.reviewsCount}>({deal.reviewsCount})</span>
         </div>
         <div className={styles.priceRow}>
-          <span className={styles.price}>{deal.price.toFixed(2)} F</span>
-          <span className={styles.oldPrice}>{deal.oldPrice.toFixed(2)} F</span>
+          <span className={styles.price}>{deal.price.toLocaleString()} FCFA</span>
+          <span className={styles.oldPrice}>{deal.oldPrice.toLocaleString()} FCFA</span>
         </div>
-        <button type="button" className={styles.addToCartButton}>
-          🛒 Ajouter au panier
-        </button>
       </div>
     </div>
   );
 }
 
 export default function DailyDealsSection() {
-  const [expanded, setExpanded] = useState(false);
-  const { hours, minutes, seconds } = useCountdown(8.41); // ~08h 24m de départ
+  const { hours, minutes, seconds } = useCountdown(8.41);
 
   return (
     <section className={styles.section}>
       <div className={styles.header}>
         <div className={styles.headerLeft}>
-          {/* <span className={styles.lightning}>⚡</span> */}
-          <div>
-            <h2 className={styles.title}>Offres du jour</h2>
-            <p className={styles.subtitle}>Nouvelles offres toutes les 24 heures !</p>
-          </div>
+          <h2 className={styles.title}>Ventes Flash | Chaque jour</h2>
         </div>
 
         <div className={styles.headerRight}>
           <div className={styles.countdown}>
-            <span className={styles.countdownLabel}>Se termine dans :</span>
-            <div className={styles.timeBoxes}>
-              <div className={styles.timeBox}>
-                <span className={styles.timeValue}>{hours}</span>
-                <span className={styles.timeUnit}>Hrs</span>
-              </div>
-              <div className={styles.timeBox}>
-                <span className={styles.timeValue}>{minutes}</span>
-                <span className={styles.timeUnit}>Min</span>
-              </div>
-              <div className={styles.timeBox}>
-                <span className={styles.timeValue}>{seconds}</span>
-                <span className={styles.timeUnit}>Sec</span>
-              </div>
-            </div>
+            <span className={styles.countdownTime}>
+              {hours}h: {minutes}m: {seconds}s
+            </span>
           </div>
 
-          <button
-            type="button"
-            className={styles.detailsButton}
-            onClick={() => setExpanded((prev) => !prev)}
-          >
-            {expanded ? "Réduire" : "Voir tous les détails"} <span aria-hidden>→</span>
+          <button type="button" className={styles.arrowButton}>
+            →
           </button>
         </div>
       </div>
 
-      {expanded && (
-        <div className={styles.dealsTrack}>
-          {DEALS.map((deal) => (
-            <DealCard key={deal.id} deal={deal} />
-          ))}
-        </div>
-      )}
+      <div className={styles.dealsTrack}>
+        {DEALS.map((deal) => (
+          <DealCard key={deal.id} deal={deal} />
+        ))}
+      </div>
     </section>
   );
 }
