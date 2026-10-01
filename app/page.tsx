@@ -9,14 +9,16 @@ import { Newsletter } from "@/components/boty/newsletter"
 import { Footer } from "@/components/boty/footer"
 import SpecialOrderBubble from "@/components/special-order-bubble/SpecialOrderBubble"
 import DailyDealsSection from "@/components/daily-deals/Dailydealssection"
+import PremiumFlashSale from "@/components/premium-flash-sale/PremiumFlashSale"
 
 export default function HomePage() {
   return (
     <main>
+      <PremiumFlashSale />
       <Header />
       <Hero />
       <TrustBadges />
-      <DailyDealsSection />
+      {/* <DailyDealsSection /> */}
       <ProductGrid />
       <FeatureSection />
       <Testimonials />

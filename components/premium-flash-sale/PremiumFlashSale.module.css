@@ -1,0 +1,383 @@
+/* Overlay semi-transparent */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(43, 22, 12, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  padding: 20px;
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Popup principal */
+.popup {
+  position: relative;
+  background: #FCF8EF;
+  border-radius: 24px;
+  max-width: 900px;
+  width: 100%;
+  max-height: 90vh;
+  overflow: hidden;
+  box-shadow: 0 25px 50px rgba(87, 45, 21, 0.3);
+  animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Bouton de fermeture */
+.closeButton {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 40px;
+  height: 40px;
+  background: rgba(87, 45, 21, 0.1);
+  border: none;
+  border-radius: 50%;
+  font-size: 28px;
+  font-weight: 300;
+  color: #572D15;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.closeButton:hover {
+  background: rgba(87, 45, 21, 0.2);
+  transform: rotate(90deg);
+}
+
+/* Contenu principal */
+.content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  min-height: 500px;
+}
+
+/* Section image */
+.imageSection {
+  background: linear-gradient(135deg, #EABC3D 0%, #C8982C 100%);
+  padding: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.imageSection::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23572D15' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  opacity: 0.3;
+}
+
+.imageWrapper {
+  position: relative;
+  width: 100%;
+  max-width: 350px;
+  aspect-ratio: 1;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(87, 45, 21, 0.3);
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.productImage {
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.popup:hover .productImage {
+  transform: scale(1.05);
+}
+
+/* Section texte */
+.textSection {
+  background: #FCF8EF;
+  padding: 50px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+}
+
+/* Titre fixe */
+.title {
+  font-family: "DM Serif Display", serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: #572D15;
+  margin: 0 0 30px 0;
+  text-align: center;
+  line-height: 1.2;
+}
+
+/* Bulle de dialogue */
+.speechBubble {
+  background: #fff;
+  border: 3px solid #EABC3D;
+  border-radius: 20px;
+  padding: 25px;
+  margin-bottom: 30px;
+  position: relative;
+  box-shadow: 0 10px 30px rgba(87, 45, 21, 0.1);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.02);
+  }
+}
+
+.speechBubble::before {
+  content: "";
+  position: absolute;
+  top: -15px;
+  left: 30px;
+  width: 0;
+  height: 0;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-bottom: 15px solid #EABC3D;
+}
+
+.bubbleTitle {
+  font-size: 18px;
+  font-weight: 700;
+  color: #AA2D25;
+  margin: 0 0 12px 0;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.bubbleSubtitle {
+  font-size: 16px;
+  color: #572D15;
+  margin: 0 0 8px 0;
+  line-height: 1.5;
+  font-weight: 500;
+}
+
+.bubbleAction {
+  font-size: 14px;
+  color: #C8982C;
+  margin: 0;
+  font-weight: 600;
+  font-style: italic;
+}
+
+/* Bouton CTA fixe */
+.ctaButton {
+  background: linear-gradient(135deg, #572D15 0%, #2B160C 100%);
+  color: #FCF8EF;
+  border: none;
+  border-radius: 50px;
+  padding: 18px 32px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 20px rgba(87, 45, 21, 0.3);
+  text-align: center;
+  margin-bottom: 25px;
+  position: relative;
+  overflow: hidden;
+}
+
+.ctaButton::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #EABC3D 0%, #C8982C 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.ctaButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(87, 45, 21, 0.4);
+}
+
+.ctaButton:hover::before {
+  opacity: 0.1;
+}
+
+.ctaButton:active {
+  transform: translateY(0);
+}
+
+/* Barre de progression */
+.progressBar {
+  width: 100%;
+  height: 4px;
+  background: rgba(87, 45, 21, 0.1);
+  border-radius: 2px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.progressFill {
+  height: 100%;
+  background: linear-gradient(90deg, #EABC3D 0%, #C8982C 100%);
+  border-radius: 2px;
+  transition: width 0.1s linear;
+}
+
+/* Indicateurs de slides */
+.slideIndicators {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+.indicator {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(87, 45, 21, 0.2);
+  transition: all 0.3s ease;
+}
+
+.activeIndicator {
+  background: #EABC3D;
+  width: 24px;
+  border-radius: 4px;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .content {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+
+  .imageSection {
+    padding: 30px;
+    min-height: 300px;
+  }
+
+  .imageWrapper {
+    max-width: 250px;
+  }
+
+  .textSection {
+    padding: 30px 25px;
+  }
+
+  .title {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+
+  .speechBubble {
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+
+  .bubbleTitle {
+    font-size: 16px;
+  }
+
+  .bubbleSubtitle {
+    font-size: 14px;
+  }
+
+  .ctaButton {
+    padding: 15px 25px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 600px) {
+  .popup {
+    border-radius: 16px;
+    max-height: 95vh;
+  }
+
+  .imageSection {
+    padding: 20px;
+    min-height: 250px;
+  }
+
+  .imageWrapper {
+    max-width: 200px;
+  }
+
+  .textSection {
+    padding: 25px 20px;
+  }
+
+  .title {
+    font-size: 20px;
+    margin-bottom: 15px;
+  }
+
+  .speechBubble {
+    padding: 15px;
+    margin-bottom: 15px;
+  }
+
+  .bubbleTitle {
+    font-size: 14px;
+  }
+
+  .bubbleSubtitle {
+    font-size: 13px;
+  }
+
+  .bubbleAction {
+    font-size: 12px;
+  }
+
+  .ctaButton {
+    padding: 12px 20px;
+    font-size: 13px;
+  }
+
+  .closeButton {
+    width: 32px;
+    height: 32px;
+    font-size: 24px;
+    top: 12px;
+    right: 12px;
+  }
+}
