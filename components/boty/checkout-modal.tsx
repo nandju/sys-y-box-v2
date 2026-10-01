@@ -36,42 +36,63 @@ export function CheckoutModal({ isOpen, onClose }: { isOpen: boolean; onClose: (
     e.preventDefault()
     setIsSubmitting(true)
 
-    // Format order details for WhatsApp
-    const orderItems = items.map(item => 
-      `• ${item.name} (${item.quantity}x) - ${(item.price * item.quantity).toLocaleString()} FCFA`
-    ).join('\n')
+    try {
+      // Préparation des données de commande
+      const orderData = {
+        customer: {
+          name: formData.name,
+          phone: formData.phone,
+          email: formData.email || undefined,
+          address: formData.address,
+          notes: formData.notes || undefined,
+        },
+        items: items.map(item => ({
+          id: item.id,
+          name: item.name,
+          description: item.description,
+          price: item.price,
+          quantity: item.quantity,
+          image: item.image,
+        })),
+        subtotal: subtotal,
+        shipping: 0,
+        total: subtotal,
+        currency: "FCFA",
+        paymentMethod: "Email",
+      }
 
-    const message = `
-🎉 *NOUVELLE COMMANDE SYS'Y BOX EVENTS*
+      // Envoi de la notification email via API
+      const apiResponse = await fetch('/api/orders', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(orderData),
+      })
 
-👤 *Informations du client*
-Nom: ${formData.name}
-Téléphone: ${formData.phone}
-Email: ${formData.email}
-Adresse: ${formData.address}
+      const apiResult = await apiResponse.json()
 
-📦 *Détails de la commande*
-${orderItems}
+      if (!apiResponse.ok) {
+        console.error('Erreur API:', apiResult.error)
+        throw new Error('Erreur lors de l\'envoi de la commande')
+      }
 
-💰 *Total: ${subtotal.toLocaleString()} FCFA*
+      // Commande réussie
+      console.log('Commande créée avec succès:', apiResult.orderId)
+      console.log('Notification email envoyée:', apiResult.emailSent)
 
-📝 *Notes supplémentaires*
-${formData.notes || "Aucune note"}
+      // Clear cart after successful order
+      clearCart()
+      setIsSubmitting(false)
+      onClose()
 
-Merci pour votre commande ! Nous vous contacterons bientôt.
-    `.trim()
-
-    // WhatsApp number (replace with actual number)
-    const whatsappNumber = "2250748447444" // Côte d'Ivoire format
-    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`
-
-    // Open WhatsApp in new tab
-    window.open(whatsappUrl, '_blank')
-
-    // Clear cart after successful order
-    clearCart()
-    setIsSubmitting(false)
-    onClose()
+      // Alert de confirmation
+      alert(`✅ Commande effectuée avec succès !\n\nNuméro de commande: ${apiResult.orderId}\n\nVous recevrez une confirmation par email.\nNous vous contacterons bientôt pour finaliser votre commande.`)
+    } catch (error) {
+      console.error('Erreur lors de la commande:', error)
+      setIsSubmitting(false)
+      alert('Une erreur est survenue lors de la commande. Veuillez réessayer.')
+    }
   }
 
   if (items.length === 0) return null
@@ -84,7 +105,7 @@ Merci pour votre commande ! Nous vous contacterons bientôt.
             Finaliser votre commande
           </DialogTitle>
           <DialogDescription>
-            Remplissez vos informations pour envoyer votre commande via WhatsApp
+            Remplissez vos informations pour finaliser votre commande
           </DialogDescription>
         </DialogHeader>
 
@@ -187,7 +208,7 @@ Merci pour votre commande ! Nous vous contacterons bientôt.
               disabled={isSubmitting}
               className="flex-1 bg-[#572D15] text-[#FCF8EF] hover:bg-[#2B160C]"
             >
-              {isSubmitting ? "Envoi en cours..." : "Commander sur WhatsApp"}
+              {isSubmitting ? "Traitement en cours..." : "Confirmer la commande"}
             </Button>
           </div>
         </form>
